@@ -8,8 +8,26 @@ public class CommandArgs {
 
     @Parameter(
             names = {"-p", "--path"},
-            required = true
+            description = "Путь до файла"
     )
-    private String path;
+    private String path = "tickets.txt";
+
+    @Parameter(
+            names = {"-o", "--origin"},
+            description = "Точка отправления"
+    )
+    private String origin = "VVO";
+
+    @Parameter(
+            names = {"-d", "--destination"},
+            description = "Точка назначения"
+    )
+    private String destination = "TLV";
+
+    @Parameter(
+            names = {"--help", "-h"},
+            help = true
+    )
+    private boolean help = false;
 
 }
