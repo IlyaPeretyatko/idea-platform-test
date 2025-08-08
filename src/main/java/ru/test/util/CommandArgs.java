@@ -10,7 +10,7 @@ public class CommandArgs {
             names = {"-p", "--path"},
             description = "Путь до файла"
     )
-    private String path = "tickets.txt";
+    private String path = "tickets.json";
 
     @Parameter(
             names = {"-o", "--origin"},
