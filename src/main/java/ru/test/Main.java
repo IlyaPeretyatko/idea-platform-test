@@ -1,6 +1,5 @@
 package ru.test;
 
-import com.beust.jcommander.JCommander;
 import ru.test.entity.Ticket;
 import ru.test.service.TicketAnalyzer;
 import ru.test.util.CommandArgs;
@@ -13,10 +12,14 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        CommandParser commandParser = new CommandParser();
         try {
-            CommandParser commandParser = new CommandParser();
             commandParser.parse(args);
             CommandArgs commandArgs = commandParser.getCommandArgs();
+            if (commandArgs.isHelp()) {
+                commandParser.getJCommander().usage();
+                return;
+            }
             String path = commandArgs.getPath();
             String origin = commandArgs.getOrigin();
             String destination = commandArgs.getDestination();
@@ -32,7 +35,7 @@ public class Main {
             }
             System.out.println(ticketAnalyzer.calculateDifferenceBetweenAveragePriceAndMedian(origin, destination));
         } catch (IOException e) {
-            e.printStackTrace();
+            commandParser.getJCommander().usage();
         }
     }
 }

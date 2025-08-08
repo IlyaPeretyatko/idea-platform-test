@@ -8,9 +8,11 @@ public class CommandParser {
 
     private CommandArgs commandArgs;
 
+    private JCommander jCommander;
+
     public void parse(String[] args) {
         commandArgs = new CommandArgs();
-        JCommander jCommander = JCommander.newBuilder()
+        jCommander = JCommander.newBuilder()
                 .addObject(commandArgs)
                 .build();
         jCommander.parse(args);

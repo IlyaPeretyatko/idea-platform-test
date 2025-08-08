@@ -26,7 +26,8 @@ public class CommandArgs {
 
     @Parameter(
             names = {"--help", "-h"},
-            help = true
+            help = true,
+            description = "Инструкция"
     )
     private boolean help = false;
 
