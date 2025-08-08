@@ -7,6 +7,7 @@ import ru.test.util.CommandParser;
 import ru.test.util.TicketParser;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class Main {
             TicketAnalyzer ticketAnalyzer = new TicketAnalyzer(tickets);
             Map<String, Integer> minFlightTimes = ticketAnalyzer.calculateMinFlightTimeForEachCarrier(origin, destination);
             for (String carrier : minFlightTimes.keySet()) {
-                System.out.println(carrier + " " + minFlightTimes.get(carrier));
+                System.out.println(carrier + " " + minFlightTimes.get(carrier) + "s");
             }
             System.out.println(ticketAnalyzer.calculateDifferenceBetweenAveragePriceAndMedian(origin, destination));
         } catch (IOException e) {

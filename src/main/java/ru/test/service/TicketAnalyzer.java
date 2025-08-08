@@ -52,7 +52,10 @@ public class TicketAnalyzer {
 
     public static double calculateMedianPrice(List<Ticket> ticketsList) {
         if (ticketsList == null || ticketsList.isEmpty()) return 0;
-        int size = ticketsList.size();
-        return size % 2 == 0 ? (ticketsList.get(size / 2).getPrice() + ticketsList.get(size / 2 - 1).getPrice()) / 2.0 : ticketsList.get(size / 2).getPrice();
+        List<Ticket> sortedTickets = ticketsList.stream()
+                .sorted(Comparator.comparingInt(Ticket::getPrice))
+                .toList();
+        int size = sortedTickets.size();
+        return size % 2 == 0 ? (sortedTickets.get(size / 2).getPrice() + sortedTickets.get(size / 2 - 1).getPrice()) / 2.0 : sortedTickets.get(size / 2).getPrice();
     }
 }
