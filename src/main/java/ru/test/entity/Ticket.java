@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 @NoArgsConstructor
 public class Ticket {
 
-
     @JsonProperty("origin")
     private String origin;
 
@@ -51,7 +50,6 @@ public class Ticket {
     @JsonProperty("price")
     private int price;
 
-
     public String getDepartureDateTime() {
         return departureDate + " " + departureTime;
     }
@@ -60,7 +58,7 @@ public class Ticket {
         return arrivalDate + " " + arrivalTime;
     }
 
-    public int getFlightTime() throws ParseException {
+    public int calculateFlightTime() throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yy HH:mm");
         Date departure = format.parse(getDepartureDateTime());
         Date arrival = format.parse(getArrivalDateTime());
